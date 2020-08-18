@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Store and Cart</title>
+    </head>
+    <body>
+        <h1 class="title"> Goods </h1>
+        <div class="store-block">
+            <div class="store-item">
+                <h1> Switch 全新主機 </h1>
+                <img src="Images/Switch1.png" width="250" height="250">
+                <div class="store-detail">
+                    <span> $9970 </span>
+                    <button> Add to Cart </button>
+                </div>
+            </div>
+            <div class="store-item">
+                <h1> Switch 螢光色手把 </h1>
+                <img src="Images/Switch2.png"  width="250" height="250">
+                <div class="store-detail">
+                    <span> $2350 </span>
+                    <button> Add to Cart </button>
+                </div>
+            </div>
+            <div class="store-item">
+                <h1> Switch 充電座 </h1>
+                <img src="Images/Switch3.png" width="250" height="250">
+                <div class="store-detail">
+                    <span> $1500 </span>
+                    <button> Add to Cart </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-block">
+            <h1 class="title"> Cart </h1>
+            <div class="cart-row">
+                <span class="goods cart-column"> good </span>
+                <span class="quantity cart-column"> quantity </span>
+                <span class="price cart-column"> price </span>
+            </div>
+
+            <div class="cart-item"></div>
+
+            <div class="cart-total">
+                <strong> Total : </strong>
+                <span class="totalPrice"> $0 </span>
+            </div>
+
+            <button class="purchase"> Purchasse </button>
+        </div>
+    </body>
+</html>
+
+<style>
+
+    .title{
+        text-align: center;
+    }
+
+    .store-block{
+        display: flex; /*div區塊的排序方式*/
+        justify-content: space-around; /*div區塊裡元素置中模式*/
+    }
+
+    .store-detail{
+        display: flex;
+    }
+
+    .cart-row{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .cart-column{
+        margin-right: 1.5em;
+    }
+
+    .cart-total{
+        text-align: end;
+    }
+
+    .purchase{
+        /*justify-content: space-around;*/
+        /*vertical-align: middle;*/
+        display: block;
+        margin: 40px auto; /*設定為區塊展示後才能用調整外距的方式排版*/
+    }
+
+    /*
+    .cart-block{
+        display: flex;
+        justify-content: space-around;
+    }
+    */
+
+</style>
