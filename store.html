@@ -42,51 +42,7 @@
             </div>
 
             <div class="cart-all-item">
-                <div class="cart-item" data-item="1">
-                    <div class="goods cart-column">  
-                        <img class="goods-img" src="Images/Switch1.png" width="100" height="100">
-                        <span class="goods-title"> Switch 全新主機 </span>
-                    </div>
-                    <div class="quantity cart-column">
-                        <button class="increase"> + </button>
-                        <input class="quantity-input" type="number" value="1" min="1">
-                        <button class="decrease"> - </button>
-                    </div>
-                    <div class="price cart-column">
-                        <span class="price-title"> $9970 </span>
-                        <button class="remove"> Remove </button>
-                    </div>
-                </div>
-                <div class="cart-item" data-item="2">
-                    <div class="goods cart-column">  
-                        <img class="goods-img" src="Images/Switch2.png" width="100" height="100">
-                        <span class="goods-title"> Switch 螢光色手把 </span>
-                    </div>
-                    <div class="quantity cart-column">
-                        <button class="increase"> + </button>
-                        <input class="quantity-input" type="number" value="3" min="1">
-                        <button class="decrease"> - </button>
-                    </div>
-                    <div class="price cart-column">
-                        <span class="price-title"> $2350 </span>
-                        <button class="remove"> Remove </button>
-                    </div>
-                </div>
-                <div class="cart-item" data-item="3">
-                    <div class="goods cart-column">  
-                        <img class="goods-img" src="Images/Switch3.png" width="100" height="100">
-                        <span class="goods-title"> Switch 充電座 </span>
-                    </div>
-                    <div class="quantity cart-column">
-                        <button class="increase"> + </button>
-                        <input class="quantity-input" type="number" value="2" min="1">
-                        <button class="decrease"> - </button>
-                    </div>
-                    <div class="price cart-column">
-                        <span class="price-title"> $1500 </span>
-                        <button class="remove"> Remove </button>
-                    </div>
-                </div>
+                
             </div>
 
             <div class="cart-total">
@@ -122,6 +78,23 @@
     .cart-item{
         display: flex;
         justify-content: space-around;
+    }
+
+    .goods{
+        width: 250px;
+    }
+
+    .goods-img{
+        margin-right: 5px;
+    }
+
+    .quantity-input{
+        margin: 0 5px;
+        width: 50px;
+    }
+
+    .price-title{
+        margin-right: 5px;
     }
 
     .cart-column{
