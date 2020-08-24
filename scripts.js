@@ -1,49 +1,25 @@
-//console.log("in here") //直接output來確認有抓到對應的html檔
-
-if(document.readyState == 'loading') { //網頁載入的狀態:讀取中(loading)
+if(document.readyState == 'loading') { 
     document.addEventListener('DOMContectLoaded', ready) 
-    //網頁生命週期中的DOMContectLoaded(已加載完HTML,DOM建構完成時)
 } else {
     ready()
 }
 
 function ready() {
     var addItemToCartButtons = document.getElementsByClassName('add-to-cart')
-    //console.log(addItemToCartButtons) //確認有抓到相對應class的html標籤
-    Array.prototype.forEach.call(addItemToCartButtons, item => item.addEventListener('click', addToCartClicked))
-    //上述是第一種forEach寫法
+    Array.prototype.forEach.call(addItemToCartButtons, item =>
+         item.addEventListener('click', addToCartClicked))
 
     var removeCartItemButtons = document.getElementsByClassName('remove')
-    for(var item of removeCartItemButtons){
-        item.addEventListener('click', removeCartItem)
-    }
-    //上述是第二種寫法,應該算for?
+    Array.prototype.forEach.call(removeCartItemButtons, item =>
+        item.addEventListener('click', removeCartItem))
 
     var increaseQuantityButtons = document.getElementsByClassName('increase')
-    for(var i=0; i<increaseQuantityButtons.length; i++){
-        var button = increaseQuantityButtons[i]
-        button.addEventListener('click', increaseQuantity)
-    }
-    //第三種,最常見的方式
+    Array.prototype.forEach.call(increaseQuantityButtons, item =>
+        item.addEventListener('click', increaseQuantity))
 
     var decreaseQuantityButtons = document.getElementsByClassName('decrease')
-    for(var i=0; i<decreaseQuantityButtons.length; i++){
-        var button = decreaseQuantityButtons[i]
-        button.addEventListener('click', decreaseQuantity)
-    }
-    /*
-    for(var i=0; i<addItemToCartButtons.length; i++){
-        var button = addItemToCartButtons[i]
-        button.addEventListener('click', function() {
-            console.log("clicked")
-        })
-        //button.addEventListener('click', addItemToCart()) //不能加上小括號,否則會在頁面載入時就觸發 WHY?
-    }
-    */
-    //上述是全寫在一function裡的方式
-
-    //[removeCartItemButtons].forEach(item => item.addEventListener('click', removeCartItem))
-    //上述此方法無法使用 WHY?
+    Array.prototype.forEach.call(decreaseQuantityButtons, item =>
+        item.addEventListener('click', decreaseQuantity))
 
     var purchaseCartItemButton = document.getElementsByClassName('purchase')
     purchaseCartItemButton[0].addEventListener('click', purchaseCartItem)
@@ -61,7 +37,6 @@ function addToCartClicked(event) {
     var isNewItem = true;
     for(var i=0; i<allCartItem.length; i++) {
         if(allCartItem[i].getAttribute('data-item') == storeItemIndex) {
-        //利用HTML5新增的data-*屬性來確認購物車內是否已有此項目
             isNewItem = false;
             break
         }
@@ -89,20 +64,19 @@ function addItemToCart(image, title, price, index) {
                     <div class="price cart-column">
                         <span class="price-title"> $${price} </span>
                         <button class="remove"> Remove </button>
-                    </div>` //不用整個包進來,因為要新增元素加入的關係不用留著最外面的一層
+                    </div>`
 
     var newItem = document.createElement('div')
-    newItem.classList.add('cart-item') //對新增的元素加上屬性
+    newItem.classList.add('cart-item') 
     newItem.dataset.item = index
-    newItem.innerHTML = cartItem //未使用innerHTML直接加上去會以純文本顯示
+    newItem.innerHTML = cartItem
 
     var addpoint = document.getElementsByClassName('cart-all-item')[0] 
-    addpoint.append(newItem) //從指定屬性的元素內,以最尾端放入
+    addpoint.append(newItem) 
 
     newItem.getElementsByClassName('increase')[0].addEventListener('click', increaseQuantity)
     newItem.getElementsByClassName('decrease')[0].addEventListener('click', decreaseQuantity)
     newItem.getElementsByClassName('remove')[0].addEventListener('click', removeCartItem)
-    //加上原本需要的事件
 }
 
 function removeCartItem(event) {
@@ -127,7 +101,7 @@ function decreaseQuantity(event) {
     var quantity = quantityInput.value
 
     if(quantity > 1) {
-        quantityInput.value = parseInt(quantity) - 1 //讓數量不要成為負數
+        quantityInput.value = parseInt(quantity) - 1 
     }
     singleCartItemPrice(quantityField, quantityInput.value)
     totalCartItemPrice()
@@ -166,21 +140,11 @@ function totalCartItemPrice() {
 }
 
 function purchaseCartItem() {
-    /*
-    var allCartItem = document.getElementsByClassName('cart-all-item')[0].children
-    var allCartItemNumber = allCartItem.length
-    for(var i=0; i<allCartItemNumber; i++) {
-        allCartItem[i].remove()
-    } 
-    */
-    //上述為原本的寫法,執行起來會有不完全刪完的狀況
-
     var allCartItemField = document.getElementsByClassName('cart-all-item')[0]
-    //allCartItemField.innerHTML = '' //第一種方法
 
     while(allCartItemField.firstChild) {
         allCartItemField.removeChild(allCartItemField.lastChild)
-    } //第二種方法
+    }
 
     var totalPriceField = document.getElementsByClassName('totalPrice')[0]
     totalPriceField.innerText = " $0 "
